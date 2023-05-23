@@ -1,17 +1,15 @@
 const {  
   client,
-  createUser,
-  updateUser,
-  getAllUsers,
-  getUserById,
-  createPost,
-  updatePost,
-  getAllPosts,
-  getPostsByUser,
-  createTags,
-  addTagsToPost,  
-  getPostById, 
-  
+	getAllUsers,
+	createUser,
+	updateUser,
+	createPost,
+	updatePost,
+	getAllPosts,
+	getPostsByUser,
+	getUserById,
+	createTags,
+	addTagsToPost,
 	getPostsByTagName,
 } = require('./index');
 
@@ -82,24 +80,28 @@ async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
 
-    await createUser({ 
+    const albert = await createUser({ 
       username: 'albert', 
       password: 'bertie99',
       name: 'Al Bert',
       location: 'Sidney, Australia' 
     });
-    await createUser({ 
+    const sandra = await createUser({ 
       username: 'sandra', 
       password: '2sandy4me',
       name: 'Just Sandra',
       location: 'Ain\'t tellin\''
     });
-    await createUser({ 
+    const glamgal = await createUser({ 
       username: 'glamgal',
       password: 'soglam',
       name: 'Joshua',
       location: 'Upper East Side'
     });
+    //test it!
+		console.log("albert:", albert);
+		console.log("sandra:", sandra);
+		console.log("glamgal:", glamgal);
 
     console.log("Finished creating users!");
   } catch (error) {
@@ -238,3 +240,4 @@ rebuildDB()
   .then(testDB)
   .catch(console.error)
   .finally(() => client.end());
+

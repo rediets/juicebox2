@@ -1,4 +1,5 @@
 // inside index.js
+require("dotenv").config();
 
 const PORT = 3000;
 const express = require("express");
@@ -8,6 +9,14 @@ const morgan = require("morgan");
 server.use(morgan("dev"));
 
 server.use(express.json())
+
+server.get("/background/:color", (req, res, next) => {
+	res.send(`
+	  <body style="background: ${req.params.color};">
+		<h1>Hello World</h1>
+	  </body>
+	`);
+});
 
 server.use((req, res, next) => {
     console.log("<____Body Logger START____>");
@@ -27,4 +36,6 @@ server.listen(PORT, () => {
   // old stuff
   console.log('The server is up on port', PORT)
 });
+
+
 

@@ -8,6 +8,8 @@ const client = new Client({
   host: "localhost",
   password: "1238!",
 });
+const clientURL = process.env.DATABASE_URL || 'postgres://localhost:5433/juicebox2-dev';
+//const client = new Client(clientURL);
 
 // user methods
 
